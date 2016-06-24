@@ -1,0 +1,23 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.netflix.nebula:gradle-lint-plugin:latest.release'
+    }
+}
+
+allprojects {
+    apply plugin: 'nebula.lint'
+    gradleLint.rules = ['unused-dependency']//'all-dependency', 'archaic-wrapper', 'duplicate-dependency-class']
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
